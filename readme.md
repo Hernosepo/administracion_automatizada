@@ -33,14 +33,14 @@ Este proyecto genera de forma automática carpetas y archivos base (como README.
 ## 🗂 Estructura generada (ejemplo)
 
 (CODIGO DE PROYECTO) (CLIENTE) (NOMBRE DE PROYECTO)/
-├── TALENTO/
-│ ├── CONTRACTUALES/
-│ ├── CIERRE TALENTO/
-│ └── ORDENES DE COMPRA Y PORTADA TALENTO/
-├── PROVEEDORES/
-│ ├── CIERRE PROVEEDORES/
-│ └── ORDENES DE COMPRA PROVEEDORES/
-└── CIERRE GENERAL/
+        ├── TALENTO/
+        │ ├── CONTRACTUALES/
+        │ ├── CIERRE TALENTO/
+        │ └── ORDENES DE COMPRA Y PORTADA TALENTO/
+        ├── PROVEEDORES/
+        │ ├── CIERRE PROVEEDORES/
+        │ └── ORDENES DE COMPRA PROVEEDORES/
+        └── CIERRE GENERAL/
 
 ---
 
