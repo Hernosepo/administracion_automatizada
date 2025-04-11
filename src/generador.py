@@ -8,7 +8,12 @@ def crear_nombre_proyecto(codigo,cliente,proyecto):
     nombre_completo_proyecto = f"{codigo} {cliente} {proyecto}"
     return nombre_completo_proyecto
 
+def crear_nombre_archivo(codigo,cliente,proyecto,tipo_archivo,fecha):
+    nombre_completo_archivo = f"{codigo}_{cliente.upper().strip()}_{proyecto.upper().replace(' ', '')}_{tipo_archivo.upper().replace(' ', '')}_{fecha.replace('-', '')}.txt"
+    return nombre_completo_archivo
 
+
+# Funcion para crear estructura de carpetas
 def crear_estructura_carpetas(nombre_proyecto, base_dir="./"):
     carpeta_principal = Path(base_dir) / nombre_proyecto
     carpeta_principal.mkdir(parents=True, exist_ok=True)
