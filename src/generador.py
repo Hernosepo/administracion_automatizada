@@ -1,5 +1,7 @@
 
+import shutil
 from pathlib import Path
+
 
 # Funcion crea string unificado del nombre del proyecto
 def crear_nombre_proyecto(codigo,cliente,proyecto):
@@ -47,3 +49,9 @@ def crear_estructura_desde_diccionario(estructura, ruta_base):
        
        if isinstance(subestructura, dict):
           crear_estructura_desde_diccionario(subestructura, nueva_ruta)
+
+
+def copiar_archivo_modelo(origen, destino, nuevo_nombre):
+    origen_path = Path(origen)
+    destino_path = Path(destino) / nuevo_nombre
+    shutil.copy(origen_path, destino_path)
