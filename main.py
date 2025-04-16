@@ -7,6 +7,7 @@ from src.generador import (
     copiar_archivo_modelo
 )
 
+# Variables de prueba
 codigo = '250301SMS'
 cliente = 'SUBURBIA'
 proyecto = 'MID SEASON'

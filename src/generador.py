@@ -20,6 +20,7 @@ def crear_estructura_carpetas(nombre_proyecto, base_dir="./"):
     carpeta_principal = Path(base_dir) / nombre_proyecto
     carpeta_principal.mkdir(parents=True, exist_ok=True)
 
+    # Diccionario para arbol de carpetas
     estructuras = {
         'TALENTO': {
             'CONTRACTUALES': {
@@ -38,6 +39,7 @@ def crear_estructura_carpetas(nombre_proyecto, base_dir="./"):
     }
     crear_estructura_desde_diccionario(estructuras, carpeta_principal)
 
+# Función toma diccionario y ruta para crear arbol de carpetas
 def crear_estructura_desde_diccionario(estructura, ruta_base):
    for nombre_carpeta, subestructura in estructura.items():
        nueva_ruta = ruta_base / nombre_carpeta
@@ -47,10 +49,11 @@ def crear_estructura_desde_diccionario(estructura, ruta_base):
        readme = nueva_ruta / "README.txt"
        readme.write_text(f"Carpeta: {nombre_carpeta}\nProyecto: {ruta_base.name}\n")
        
+       # is instance para verificar tipo
        if isinstance(subestructura, dict):
           crear_estructura_desde_diccionario(subestructura, nueva_ruta)
 
-
+# Funcion para empezar a trabajar el copiado de templates a carpetas creadas
 def copiar_archivo_modelo(origen, destino, nuevo_nombre):
     origen_path = Path(origen)
     destino_path = Path(destino) / nuevo_nombre
