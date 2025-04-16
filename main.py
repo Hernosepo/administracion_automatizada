@@ -1,5 +1,8 @@
 
 from pathlib import Path
+from copy import deepcopy
+from src.captura import capturar_datos_interactivamente
+from src.diccionario_proyecto import datos_proyecto
 from src.generador import (
     crear_nombre_proyecto,
     crear_estructura_carpetas,
@@ -26,3 +29,6 @@ copiar_archivo_modelo(origen, destino, nombre_archivo)
 
 print(f"Proyecto creado: {nombre_proyecto}")
 print(f"Nombre de Archivo: {nombre_archivo}")
+
+
+datos_completos = capturar_datos_interactivamente(deepcopy(datos_proyecto))
