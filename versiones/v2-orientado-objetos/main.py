@@ -2,6 +2,5 @@
 from src.proyecto import Proyecto
 
 proyecto = Proyecto()
-print(proyecto.datos_proyecto["cliente"])  # Debería imprimir: None
-proyecto.datos_proyecto["cliente"] = "SUBURBIA"
-print(proyecto.datos_proyecto)
+proyecto.capturar_datos_interactivamente()
+proyecto.mostrar_estado()

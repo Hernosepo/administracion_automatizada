@@ -1,6 +1,7 @@
 class Proyecto:
-    
+
     def __init__(self):
+        # Datos generales
         self.datos_proyecto = {
         "cliente": None, #str
         "codigo_proyecto": None, #str
@@ -11,6 +12,7 @@ class Proyecto:
         "director": None #str
         }
 
+        # Terminos contractuales
         self.terminos_contractuales = {
         "Medios": None, #str
         "Temporalidad": None, #str o int
@@ -53,3 +55,34 @@ class Proyecto:
         "observaciones": None, #str
         "responsable_administrativo": None #str
         }
+
+    def mostrar_estado(self):
+        print('DATOS GENERALES')
+        print(self.datos_proyecto)
+        print('\nTERMINOS CONTRACTUALES')
+        print(self.terminos_contractuales)
+        print('\nPRESUPUESTOS')
+        print(self.presupuestos)
+        print('\nPERSONAJES')
+        print(self.personajes)
+        print('\nFECHAS IMPORTANTES')
+        print(self.fechas_importantes)
+        print('\nINFO TECNICA')
+        print(self.info_tecnica)
+        print('\nEXTRAS')
+        print(self.extras)
+    
+    def capturar_datos_interactivamente(self):
+        for nombre_bloque, bloque in [
+            ('DATOS GENERALES', self.datos_proyecto),
+            ('TERMINOS CONTRACTUALES', self.terminos_contractuales),
+            ('PRESUPUESTOS', self.presupuestos),
+            ('PERSONAJES', self.personajes),
+            ('FECHAS IMPORTANTES', self.fechas_importantes),
+            ('INFO TECNICA', self.info_tecnica),
+            ('EXTRAS', self.extras)
+        ]:
+            print(f"\n--- {nombre_bloque} ---")
+            for campo in bloque:
+                valor = input(f"Ingresá {campo}: ").strip()
+                bloque[campo] = valor
