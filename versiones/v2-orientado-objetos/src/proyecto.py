@@ -90,7 +90,7 @@ class Proyecto:
                 valor = input(f"Ingresá {campo}: ").strip()
                 bloque[campo] = valor
 
-    def crear_documento_desde_template(self, nombre_template="orden_compra_modelo.txtt", carpeta_destino="/Users/hernangeller/Shamoun Dropbox/Hernan Geller/ACTIVIDADES/DEVELOPMENT/PROYECTOS/ADMINISTRACION AUTOMATIZADA/administracion_automatizada/versiones/v2-orientado-objetos/src"):
+    def crear_documento_desde_template(self, nombre_template="orden_compra_modelo.txt", carpeta_destino="/Users/hernangeller/Shamoun Dropbox/Hernan Geller/ACTIVIDADES/DEVELOPMENT/PROYECTOS/ADMINISTRACION AUTOMATIZADA/administracion_automatizada/versiones/v2-orientado-objetos/src"):
         # Definir rutas
         origen = Path("templates") / nombre_template
     
@@ -140,3 +140,26 @@ class Proyecto:
 
         crear_subcarpetas(carpeta_principal, estructuras)
         print('CARPETAS CREADAS CON EXITO')
+    
+    def rellenar_template_con_datos(self, nombre_template, carpeta_destino="."):
+        with open(f"templates/{nombre_template}", "r", encoding="utf-8") as file:
+            contenido = file.read()
+            datos_unificados = {}
+            datos_unificados.update(self.datos_proyecto)
+            datos_unificados.update(self.terminos_contractuales)
+            datos_unificados.update(self.presupuestos)
+            datos_unificados.update(self.personajes)
+            datos_unificados.update(self.fechas_importantes)
+            datos_unificados.update(self.info_tecnica)
+            datos_unificados.update(self.extras)
+            for clave, valor in datos_unificados.items():
+                placeholder = f"{{{{{clave}}}}}"  # genera {{cliente}}, etc.
+                contenido = contenido.replace(placeholder, valor if valor else "")
+
+            nombre_archivo = f"{self.datos_proyecto['codigo_proyecto']}_{self.datos_proyecto['cliente']}_ORDEN.txt"
+            nombre_archivo = nombre_archivo.replace(" ", "").upper()
+
+            ruta_destino = Path(carpeta_destino) / nombre_archivo
+            with open(ruta_destino, "w", encoding="utf-8") as salida:
+                salida.write(contenido)
+                print(f"✅ Documento generado con datos: {ruta_destino}")
