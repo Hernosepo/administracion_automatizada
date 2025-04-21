@@ -136,4 +136,7 @@ class Proyecto:
             for nombre, subestructura in estructura.items():
                 nueva_ruta = base_path / nombre
                 nueva_ruta.mkdir(exist_ok=True)
-            crear_subcarpetas(nueva_ruta, subestructura)    
+                crear_subcarpetas(nueva_ruta, subestructura)
+
+        crear_subcarpetas(carpeta_principal, estructuras)
+        print('CARPETAS CREADAS CON EXITO')
