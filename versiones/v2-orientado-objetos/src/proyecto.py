@@ -1,3 +1,6 @@
+from pathlib import Path
+import shutil
+
 class Proyecto:
 
     def __init__(self):
@@ -86,3 +89,22 @@ class Proyecto:
             for campo in bloque:
                 valor = input(f"Ingresá {campo}: ").strip()
                 bloque[campo] = valor
+
+    def crear_documento_desde_template(self, nombre_template="orden_compra_modelo.txtt", carpeta_destino="/Users/hernangeller/Shamoun Dropbox/Hernan Geller/ACTIVIDADES/DEVELOPMENT/PROYECTOS/ADMINISTRACION AUTOMATIZADA/administracion_automatizada/versiones/v2-orientado-objetos/src"):
+        # Definir rutas
+        origen = Path("templates") / nombre_template
+    
+        if not origen.exists():
+            print(f"⚠️ El archivo de plantilla no existe: {origen}")
+            return
+
+        # Generar nombre final del archivo
+        nombre_archivo = f"{self.datos_proyecto['codigo_proyecto']}_{self.datos_proyecto['cliente']}_{self.datos_proyecto['nombre_proyecto']}_ORDEN.txt"
+        nombre_archivo = nombre_archivo.replace(" ", "").upper()  # Limpieza opcional
+    
+        # Definir ruta destino
+        destino = Path(carpeta_destino) / nombre_archivo
+
+        # Copiar el archivo
+        shutil.copy(origen, destino)
+        print(f"✅ Documento creado: {destino}")
