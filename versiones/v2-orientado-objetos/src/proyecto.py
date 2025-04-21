@@ -108,3 +108,32 @@ class Proyecto:
         # Copiar el archivo
         shutil.copy(origen, destino)
         print(f"✅ Documento creado: {destino}")
+
+    def crear_estructura_carpetas(self, base_path="."):
+        carpeta_principal_nombre = (f"{self.datos_proyecto['codigo_proyecto']}_{self.datos_proyecto['cliente']}_{self.datos_proyecto['nombre_proyecto']}")
+        carpeta_principal_nombre = carpeta_principal_nombre.upper().replace(" ", "")
+        carpeta_principal = Path(base_path) / carpeta_principal_nombre
+        carpeta_principal.mkdir(parents=True, exist_ok=True)
+
+        estructuras = {
+        'TALENTO': {
+            'CONTRACTUALES': {
+                'CONTRATOS': {},
+                'SOLICITUDES DE CASTING': {},
+                'SELECCION DE TALENTO': {},
+            },
+            'CIERRE TALENTO':{},
+            'ORDENES DE COMPRA Y PORTADA TALENTO': {},
+        },
+        'PROVEEDORES':{
+            'CIERRE PROVEEDORES': {},
+            'ORDENES DE COMPRA PROVEEDORES': {},
+        },    
+        'CIERRE GENERAL': {},
+        }
+
+        def crear_subcarpetas(base_path, estructura):
+            for nombre, subestructura in estructura.items():
+                nueva_ruta = base_path / nombre
+                nueva_ruta.mkdir(exist_ok=True)
+            crear_subcarpetas(nueva_ruta, subestructura)    
