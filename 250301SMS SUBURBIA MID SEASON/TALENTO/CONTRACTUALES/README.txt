@@ -1,2 +1,0 @@
-Carpeta: CONTRACTUALES
-Proyecto: TALENTO

@@ -1,2 +1,0 @@
-Carpeta: CIERRE TALENTO
-Proyecto: TALENTO

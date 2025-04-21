@@ -1,2 +1,0 @@
-Carpeta: CIERRE PROVEEDORES
-Proyecto: PROVEEDORES
